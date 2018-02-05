@@ -1,0 +1,5 @@
+load('assignment_1_box.mat')
+addpath('util')
+addpath('plot')
+addpath('scripts')
+addpath('bob''s functions')
