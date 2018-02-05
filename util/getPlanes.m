@@ -78,19 +78,19 @@ function [ planes, pts ] = getPlanes( xyz, plot )
             distoplane = abs(remaining * planes(i,1:3)' + planes(i,4));
             mask = distoplane < PLANEDISTOL;
             %Is this really necessary? It's very slow.
-            for k = 1:size(mask,1)
-                if ~mask(k)
-                    continue
-                end
-                for l = 1:size(fitlist,1)
-                    if norm(remaining(k,:)-fitlist(l,:)) < PLANEPDISTOL
-                        break;
-                    end
-                    if l == size(fitlist,1)
-                        mask(k) = false;
-                    end
-                end
-            end
+            %for k = 1:size(mask,1)
+            %    if ~mask(k)
+            %        continue
+            %    end
+            %    for l = 1:size(fitlist,1)
+            %        if norm(remaining(k,:)-fitlist(l,:)) < PLANEPDISTOL
+            %            break;
+            %        end
+            %        if l == size(fitlist,1)
+            %            mask(k) = false;
+            %        end
+            %    end
+            %end
             newlist = cat(1,fitlist,remaining(mask,:));
             
             if sum(mask) > PLANEREFITLIM

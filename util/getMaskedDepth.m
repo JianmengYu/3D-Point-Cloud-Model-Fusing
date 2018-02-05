@@ -1,15 +1,13 @@
-function [ IMG ] = getMaskedImage(pcl_train, frameNum, plot)
-%Input: pcl_train:(cell)    The pcl_train, dude.
-%       frameNum: (int)     The number of frame.
+function [ IMG ] = getMaskedDepth(frameNum, plot)
+%Input: frameNum: (int)     The number of frame.
 %       plot:     (boolean) Use of Imshow or not.
 %   return the masked image as RGB array.
-
-    if nargin < 3
+    if nargin < 2
         plot = false;
     end
         
-    IMG = getImage(pcl_train, frameNum);
-    mask = getMask(pcl_train, frameNum);
+    IMG = getImage(frameNum);
+    mask = getMask(frameNum);
     
     for i=1:3
         temp = IMG(:,:,i);

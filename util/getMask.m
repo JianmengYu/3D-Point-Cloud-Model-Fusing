@@ -1,13 +1,11 @@
-function [ mask ] = getMask(pcl_train, frameNum)
-%Input: pcl_train:(cell)    The pcl_train, dude.
-%       frameNum: (int)     The number of frame.
+function [ mask ] = getMask(frameNum)
+%Input: frameNum: (int)     The number of frame.
 %   return the mask.
-
     offset =       [ 0.15, 0.20, 0.25, 0.04];
     center =       [-0.71,-0.3,  0.81, 0.05];
 
-    IMG = getImage(pcl_train, frameNum);
-    XYZ = getDepth(pcl_train, frameNum);
+    IMG = getImage(frameNum);
+    XYZ = getDepth(frameNum);
        
     %BG removal: clears boundary
     %Not very useful, table and box have similar color

@@ -1,6 +1,5 @@
-function [ planesout, pointsout ] = getCleanPlane( pc, plot )
-%Input: pc: filtered point cloud.
-%       plot: boolean, optional, self explanatory.
+function [ planesout, pointsout ] = getCleanPlane( frameNum, plot )
+%Input: plot: boolean, optional, self explanatory.
 %   return a list of planes, and a list of plane allocation.
 %   set detailed parameters at getPlanes function, dont do it here.
 %---Set parameter-----------------------------------------------
@@ -12,6 +11,13 @@ function [ planesout, pointsout ] = getCleanPlane( pc, plot )
     PLANEDISTOL = 0.01; %Plane-Distance Tolerance.
     
 %---End setting-------------------------------------------------
+    try
+        pc = getPC(frameNum);
+    catch Error
+        planesout = [];
+        pointsout = [];
+        return
+    end
 
     if nargin < 2
         plot = false;

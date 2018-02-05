@@ -1,14 +1,15 @@
-function [ pc ] = getPC( pcl_train, frameNum, filter )
+function [ pc ] = getPC( frameNum, filter )
 %GETPC Summary of this function goes here
 %   Detailed explanation goes here
+    global pcl_train;
 
-    if nargin < 3
+    if nargin < 2
         filter = true;
     end    
 
-    IMG = getImage(pcl_train, frameNum);
-    XYZ = getDepth(pcl_train, frameNum);
-    mask = getMask(pcl_train, frameNum);
+    IMG = getImage(frameNum);
+    XYZ = getDepth(frameNum);
+    mask = getMask(frameNum);
     
     points={};
     rgbs={};

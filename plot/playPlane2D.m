@@ -1,17 +1,15 @@
 %ROLL THE TAPE
 for i=1:50
-    a = getImage(pcl_train,i);
-    mask = getMask(pcl_train, i);
+    a = getImage(i);
+    mask = getMask(i);
     
-    try
-        pc = getPC(pcl_train,i);
-    catch Error
-        
+    [A,B] = getCleanPlane(i);
+    
+    if numel(A) == 0
         imshow(a);
         pause(0.1);
         continue
-    end
-    [~,B] = getCleanPlane(pc);
+    end        
     
     count = 1;
     for i=1:424
@@ -34,6 +32,6 @@ for i=1:50
         end
     end
     imshow(a);
-    pause(0.1);
+    pause(0.001);
 end
 reload;

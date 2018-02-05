@@ -1,10 +1,10 @@
-function [ IMG ] = getImage(pcl_train, frameNum, plot)
-%Input: pcl_train:(cell)    The pcl_train, dude.
-%       frameNum: (int)     The number of frame.
+function [ IMG ] = getImage(frameNum, plot)
+%Input: frameNum: (int)     The number of frame.
 %       plot:     (boolean) Use of Imshow or not.
 %   return the image as RGB array.
+    global pcl_train;
 
-    if nargin < 3
+    if nargin < 2
         plot = false;
     end
     
