@@ -23,7 +23,7 @@ for i=1:50
                     a(i,j,:) = [0 0 255];
                 elseif B(count)==3
                     a(i,j,:) = [0 255 0];
-                elseif B(count)==4
+                elseif B(count)==-1
                     a(i,j,:) = [255 255 0];
                 end
                 count = count + 1;
