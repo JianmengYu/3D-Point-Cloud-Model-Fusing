@@ -11,7 +11,7 @@ function [ C ] = getCorner( arg1, planes, points )
     cutoff      = 4;%  For winsor the connect line
     cutoffshift = 2;%  Shift % for 3 plane case.
     cutoff2     = 3;%  Cutoff % for 3/4th point 
-    plot = true;
+    plot = false;
     %---Initialize---
     %Problematic frames: 7 34 42
     C = zeros(3,3);
@@ -175,9 +175,9 @@ function [ C ] = getCorner( arg1, planes, points )
         mask = points == 1;
         XYZ = XYZ(mask,:);
         tps = zeros(size(XYZ,1),1);
-        v = planes(2,1:3);
+        crossV = cross(V,planes(1,1:3));
         for i = 1:size(XYZ,1)
-            [point, tp] = projectPointOnLine(XYZ(i,:),NP,v);
+            [point, tp] = projectPointOnLine(XYZ(i,:),NP,crossV);
             XYZ(i,:) = point;
             tps(i) = tp;
         end

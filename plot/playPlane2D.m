@@ -1,4 +1,5 @@
 %ROLL THE TAPE
+previmage = [];
 for i=1:50
     a = getImage(i);
     mask = getMask(i);
@@ -6,11 +7,11 @@ for i=1:50
     [A,B] = getCleanPlane(i);
     
     if numel(A) == 0
-        imshow(a);
+        %imshow(a);
         pause(0.1);
         continue
-    end        
-    
+    end
+    curi = i;
     count = 1;
     for i=1:424
         for j=1:512
@@ -31,7 +32,14 @@ for i=1:50
             end
         end
     end
-    imshow(a);
-    pause(0.001);
+    if numel(previmage) == 0
+        previmage = a;
+        continue
+    end
+    [curi-1 curi]
+    a2 = cat(2, previmage, a);
+    previmage = a;
+    imshow(a2);
+    pause();
 end
 reload;

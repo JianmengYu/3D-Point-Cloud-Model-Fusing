@@ -4,3 +4,5 @@ addpath('util')
 addpath('plot')
 addpath('scripts')
 addpath('bob''s functions')
+addpath('util/linear algebra')
+model;

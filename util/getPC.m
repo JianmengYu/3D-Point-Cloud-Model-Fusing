@@ -1,7 +1,6 @@
 function [ pc ] = getPC( frameNum, filter )
 %GETPC Summary of this function goes here
 %   Detailed explanation goes here
-    global pcl_train;
 
     if nargin < 2
         filter = true;

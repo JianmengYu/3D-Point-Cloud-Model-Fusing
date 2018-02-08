@@ -15,6 +15,9 @@ function [ planes, pts ] = getPlanes( xyz, plot )
     PLANEDISTOL = 0.006; %Plane-Distance Tolerance.
     PLANEPDISTOL = 2;  %Tolerance between point on same plane.
     PLANEMAXRES = 0.005;%Max Average Fitting Error Tolerance 
+    
+    global SEED; %Random seed for RandPerm
+    s = RandStream('mt19937ar','Seed',SEED);
 %---End setting-------------------------------------------------
 
     if nargin < 2
@@ -45,7 +48,7 @@ function [ planes, pts ] = getPlanes( xyz, plot )
         breaknextfor = false;
         %---Patch selection-------------------------------------
         L = size(remaining,1);
-        idxs = randperm(L);
+        idxs = randperm(s,L);
         for j = 1:L
             pnt = remaining(idxs(j),:);
             dists = sqrt(sum((remaining-ones(size(remaining))*diag(pnt)).^2,2));
