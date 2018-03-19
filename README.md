@@ -7,24 +7,24 @@ To a single 3D point cloud below:
 
 ## Outputs
 
-fusedPC    : finalPC.mat  
-fusedImage : combined box.fig  
+fusedPC    : `finalPC.mat`  
+fusedImage : `combined box.fig`  
 
 ## Usage 
 
 A startup.m MATLAB script is provided to load the required data automatically during startup. However it requires you to start MATLAB within the directory.  
 
-'''
+```
 git clone https://github.com/JianmengYu/av_coursework.git
 cd av_coursework
 matlab
-'''
+```
 
 The pointcloud used for the project is not included due to it's size (188 MB)  
 Manually download this to the root folder of this repo.   
 http://homepages.inf.ed.ac.uk/rbf/AVDATA/AV118DATA/assignment_1_box.mat
 
-## Processing Steps.
+## Processing Steps
 
 1) Startup functions loads everything you need.  
 2) getMask generates mask for each PC. (removeBlue and removeSkin is used)    
@@ -37,32 +37,32 @@ http://homepages.inf.ed.ac.uk/rbf/AVDATA/AV118DATA/assignment_1_box.mat
 
 ## Functions Provided
 
-startup.m  
+`startup.m`  
 Load everything you need.
 
-scripts/reload.m  
+`scripts/reload.m`  
 Clean workspace and load everything.
 
-plot/playPlane2D.m  
+`plot/playPlane2D.m`  
 Shows the extracted planes on original images, use this to tune the model.m.
 
-fuseModel.m  
+`fuseModel.m`  
 Fuses the final model.
 
 ---
 
 Functions for tuning:
 
-model.m  
+`model.m`  
 Contains descriptions and settings for fusing the box.
 
-util/getMask.m  
+`util/getMask.m`  
 Contains first stage cleaning parameters.
 
-util/getPlanes.m  
+`util/getPlanes.m`  
 Parameters for extracting planes.
 
-util/getCleanPlanes.m
+`util/getCleanPlanes.m`
 Parameters for selecting good planes.
 
 ## External Functions Used
@@ -70,15 +70,17 @@ Parameters for selecting good planes.
 For plane extraction, the MATLAB functions provided at:   
 https://www.inf.ed.ac.uk/teaching/courses/av/MATLAB/TASK3/  
 were used, these functions are stored at:   
-./bob's functions:  
+`./bob's functions`:  
 binarytest.m    fitplane.m      itree.m         rngdata.asc     verifymatch.m  
 doall.m         fitplanes.m     modelfile.m     select_patch.m  
 estimatepose.m  getallpoints.m  plotsolution.m  unarytest.m  
 
+
 For transformation linear algebra functions, these are used:  
-./util/linear algebra:  
+`./util/linear algebra`:  
 getPlaneIntersection.m      projectPointOnLine.m  roty.m  
 getPlaneLineIntersection.m  rotx.m                rotz.m  
+
 They are obtained from:  
 https://uk.mathworks.com/matlabcentral/fileexchange/17618-plane-intersection  
 https://uk.mathworks.com/matlabcentral/fileexchange/17751-straight-line-and-plane-intersection  
